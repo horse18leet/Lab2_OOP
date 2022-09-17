@@ -1,7 +1,5 @@
 public interface Action {
-    void Run(int distance);
-    void Jump(double distance);
+    boolean Run(int paramInt);
 
-    String getName();
-    String getType();
+    boolean Jump(double paramDouble);
 }

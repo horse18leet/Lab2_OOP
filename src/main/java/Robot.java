@@ -1,46 +1,31 @@
-public class Robot implements Action{
-
+public class Robot implements Action {
     private double MaxHeight;
+
     private int MaxLength;
+
     private String Name;
 
-    @Override
-    public void Run(int distance) {
-        if(distance <= MaxLength){
-            System.out.println(Name + " пробежал " + distance + "м");
+    public boolean Run(int distance) {
+        if (distance <= this.MaxLength) {
+            System.out.println("Робот " + this.Name + " пробежал " + distance + "м");
+            return true;
         }
-        else
-        {
-            System.out.println("У " + Name + " села батарейка и он не смог пробежать " + distance + "м");
-        }
+        System.out.println("Робот " + this.Name + " не смог пробежать " + distance + "м");
+        return false;
     }
 
-    @Override
-    public void Jump(double distance) {
-        if(distance <= MaxHeight){
-            System.out.println(Name + " прыгнул на " + distance + "м");
+    public boolean Jump(double distance) {
+        if (distance <= this.MaxHeight) {
+            System.out.println("Робот " + this.Name + " прыгнул на " + distance + "м");
+            return true;
         }
-        else {
-            System.out.println(Name + " не смог прыгнуть на " + distance + "м");
-        }
+        System.out.println("Робот " + this.Name + " не смог прыгнуть на " + distance + "м");
+        return false;
     }
 
-    @Override
-    public String getName() {
-        return Name;
-    }
-
-    @Override
-    public String getType() {
-        return "Робот";
-    }
-
-    Robot(String name, double maxHeight, int maxLength){
+    Robot(String name, double maxHeight, int maxLength) {
         this.MaxHeight = maxHeight;
         this.MaxLength = maxLength;
         this.Name = name;
     }
-
-
-
 }

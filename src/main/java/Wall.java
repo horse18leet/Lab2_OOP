@@ -1,10 +1,11 @@
 public enum Wall implements Barrier {
     LOW("Низкая", 1),
-    MIDDLE("Средняя", 2),
-    HIGH("Высокая", 3),
-    VERYHIGH("Очень супер высокая", 5);
+            MIDDLE("Средняя", 2),
+                    HIGH("Высокая ", 3),
+                            VERYHIGH("Очень супер высокая", 5);
 
     private String Desc;
+
     private int Height;
 
     Wall(String desc, int height) {
@@ -12,21 +13,13 @@ public enum Wall implements Barrier {
         this.Height = height;
     }
 
-    public String getDesc() {
-        return Desc;
-    }
-
     public int getDistance() {
-        return Height;
+        return this.Height;
     }
 
-    @Override
-    public boolean getReady(int height, Action a) {
-        if(height <= Height){
-            a.Jump(height);
+    public boolean getReady(Barrier barrier, Action a) {
+        if (a.Jump(barrier.getDistance()))
             return true;
-        }
-        else { return false; }
+        return false;
     }
-
-}
+    }

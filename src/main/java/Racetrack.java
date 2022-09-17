@@ -1,10 +1,11 @@
 public enum Racetrack implements Barrier {
     LOW("Короткая", 50),
-    MIDDLE("Средняя", 100),
-    HIGH("Длинная", 150),
-    VERYHIGH("Очень супер длинная", 250);
+            MIDDLE("Средняя", 100),
+                    HIGH("Длинная", 150),
+                            VERYHIGH("Очень супер длинная", 250);
 
     private String Desc;
+
     private int Length;
 
     Racetrack(String desc, int length) {
@@ -12,23 +13,13 @@ public enum Racetrack implements Barrier {
         this.Length = length;
     }
 
-    public String getDesc() {
-        return Desc;
-    }
-
     public int getDistance() {
-        return Length;
+        return this.Length;
     }
 
-    @Override
-    public boolean getReady(int height, Action a) {
-        if(height <= Length){
-            a.Run(height);
+    public boolean getReady(Barrier barrier, Action a) {
+        if (a.Run(barrier.getDistance()))
             return true;
-        }
-        else { return false; }
+        return false;
     }
-
-
-
-}
+    }
