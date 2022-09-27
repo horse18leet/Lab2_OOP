@@ -1,6 +1,8 @@
 public class Robot implements Action {
     private double MaxHeight;
 
+    private int index = 1;
+
     private int MaxLength;
 
     private String Name;
@@ -20,7 +22,13 @@ public class Robot implements Action {
             return true;
         }
         System.out.println("Робот " + this.Name + " не смог прыгнуть на " + distance + "м");
-        return false;
+        // СУПЕР ПРЫЖОК ДЛЯ РОБОТА ДОП ЗАДАНИЕ
+        if (index == 1) {
+            index--;
+            System.out.println("Робот " + this.Name + " зарядился на полную мощность и смог прыгнуть на " + distance + "м");
+            return true;
+        }
+        else return false;
     }
 
     Robot(String name, double maxHeight, int maxLength) {
